@@ -46,7 +46,7 @@ public class StatisticsPanelTestSuite {
         when(statisticsMock.postsCount()).thenReturn(resultPostCountEq0);
 
         //When
-        int postCountEq0 = statisticsPanel.
+
 
 
     }
