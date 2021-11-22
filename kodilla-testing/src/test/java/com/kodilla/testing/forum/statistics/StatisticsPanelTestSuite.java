@@ -8,8 +8,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -38,46 +41,141 @@ public class StatisticsPanelTestSuite {
     @Test
     public void testCalculateAdvStatisticsWith0Posts() {
         //Given
-        int resultPostCountEq0 = 0;
+        String[] users = {"User1", "User2", "User3"};
+        List<String> usersNames = Arrays.asList(users);
+        int resultPostCount = 0;
+        int resultCommentsCount = 100;
         StatisticsPanel statisticsPanel = new StatisticsPanel(statisticsMock);
-        statisticsMock.userNames().add("Aqq");
-        statisticsMock.postsCount();
-        statisticsMock.commentsCount();
-        when(statisticsMock.postsCount()).thenReturn(resultPostCountEq0);
+        when(statisticsMock.postsCount()).thenReturn(resultPostCount);
+        when(statisticsMock.commentsCount()).thenReturn(resultCommentsCount);
+        when(statisticsMock.userNames()).thenReturn(usersNames);
 
         //When
+        statisticsPanel.calculateAdvStatistics(statisticsMock);
+        statisticsPanel.showStatistics();
 
-
+        //Then
+        assertEquals(0, statisticsPanel.postCount());
 
     }
 
     @Test
     public void testCalculateAdvStatisticsWith1000Posts() {
+        //Given
+        String[] users = {"User1", "User2", "User3"};
+        List<String> usersNames = Arrays.asList(users);
+        int resultPostCount = 1000;
+        int resultCommentsCount = 100;
+        StatisticsPanel statisticsPanel = new StatisticsPanel(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(resultPostCount);
+        when(statisticsMock.commentsCount()).thenReturn(resultCommentsCount);
+        when(statisticsMock.userNames()).thenReturn(usersNames);
 
+        //When
+        statisticsPanel.calculateAdvStatistics(statisticsMock);
+        statisticsPanel.showStatistics();
+
+        //Then
+        assertEquals(1000, statisticsPanel.postCount());
     }
 
     @Test
     public void testCalculateAdvStatisticsWith0Comments() {
+        //Given
+        String[] users = {"User1", "User2", "User3"};
+        List<String> usersNames = Arrays.asList(users);
+        int resultPostCount = 150;
+        int resultCommentsCount = 0;
+        StatisticsPanel statisticsPanel = new StatisticsPanel(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(resultPostCount);
+        when(statisticsMock.commentsCount()).thenReturn(resultCommentsCount);
+        when(statisticsMock.userNames()).thenReturn(usersNames);
 
+        //When
+        statisticsPanel.calculateAdvStatistics(statisticsMock);
+        statisticsPanel.showStatistics();
+
+        //Then
+        assertEquals(0, statisticsPanel.commentsCount());
     }
 
     @Test
     public void testCalculateAdvStatisticsWithCommentsLtPosts() {
+        //Given
+        String[] users = {"User1", "User2", "User3"};
+        List<String> usersNames = Arrays.asList(users);
+        int resultPostCount = 200;
+        int resultCommentsCount = 100;
+        StatisticsPanel statisticsPanel = new StatisticsPanel(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(resultPostCount);
+        when(statisticsMock.commentsCount()).thenReturn(resultCommentsCount);
+        when(statisticsMock.userNames()).thenReturn(usersNames);
 
+        //When
+        statisticsPanel.calculateAdvStatistics(statisticsMock);
+        statisticsPanel.showStatistics();
+
+        //Then
+        assertEquals(0, statisticsPanel.commentsCount());
     }
 
     @Test
     public void testCalculateAdvStatisticsWithCommentsGtPosts() {
+        //Given
+        String[] users = {"User1", "User2", "User3"};
+        List<String> usersNames = Arrays.asList(users);
+        int resultPostCount = 200;
+        int resultCommentsCount = 1000;
+        StatisticsPanel statisticsPanel = new StatisticsPanel(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(resultPostCount);
+        when(statisticsMock.commentsCount()).thenReturn(resultCommentsCount);
+        when(statisticsMock.userNames()).thenReturn(usersNames);
 
+        //When
+        statisticsPanel.calculateAdvStatistics(statisticsMock);
+        statisticsPanel.showStatistics();
+
+        //Then
+        assertEquals(0, statisticsPanel.commentsCount());
     }
 
     @Test
     public void testCalculateAdvStatisticsWith0Users() {
+        //Given
+        String[] users = {};
+        List<String> usersNames = Arrays.asList(users);
+        int resultPostCount = 200;
+        int resultCommentsCount = 100;
+        StatisticsPanel statisticsPanel = new StatisticsPanel(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(resultPostCount);
+        when(statisticsMock.commentsCount()).thenReturn(resultCommentsCount);
+        when(statisticsMock.userNames()).thenReturn(usersNames);
 
+        //When
+        statisticsPanel.calculateAdvStatistics(statisticsMock);
+        statisticsPanel.showStatistics();
+
+        //Then
+        assertEquals(0, statisticsPanel.commentsCount());
     }
 
     @Test
     public void testCalculateAdvStatisticsWith100Users() {
+        //Given
+        String[] users = {"User1", "User2", "User3"};
+        List<String> usersNames = Arrays.asList(users);
+        int resultPostCount = 200;
+        int resultCommentsCount = 100;
+        StatisticsPanel statisticsPanel = new StatisticsPanel(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(resultPostCount);
+        when(statisticsMock.commentsCount()).thenReturn(resultCommentsCount);
+        when(statisticsMock.userNames()).thenReturn(usersNames);
 
+        //When
+        statisticsPanel.calculateAdvStatistics(statisticsMock);
+        statisticsPanel.showStatistics();
+
+        //Then
+        assertEquals(0, statisticsPanel.commentsCount());
     }
 }

@@ -1,6 +1,10 @@
 package com.kodilla.testing.forum.statistics;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StatisticsPanel {
+    private List<String> userNames;
     private int userCount;
     private int postCount;
     private int commentsCount;
@@ -13,13 +17,37 @@ public class StatisticsPanel {
         this.statistics = statistics;
     }
 
+    public List<String> userNames() {
+        List<String> userNamesList = new ArrayList<String>();
+        userNamesList = statistics.userNames();
+        return userNamesList;
+    }
+
+    public int postCount() {
+        return statistics.postsCount();
+    }
+
+    public int commentsCount() {
+        return statistics.commentsCount();
+    }
+
     public void calculateAdvStatistics(Statistics statistics) {
         userCount = statistics.userNames().size();
         postCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
-        avgPostCountPreUser = postCount / userCount;
-        avgCommentsCountPreUser = commentsCount / userCount;
-        avgCommentsCountPrePost = commentsCount / postCount;
+        if (userCount == 0) {
+            avgPostCountPreUser = 0;
+            avgCommentsCountPreUser = 0;
+        } else {
+            avgPostCountPreUser = postCount / userCount;
+            avgCommentsCountPreUser = commentsCount / userCount;
+        }
+        if (postCount == 0) {
+            avgCommentsCountPrePost = 0;
+        } else {
+            avgCommentsCountPrePost = commentsCount / postCount;
+        }
+
     }
 
     public void showStatistics() {
