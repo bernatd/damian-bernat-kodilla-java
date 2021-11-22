@@ -54,7 +54,7 @@ public class StatisticsPanel {
         System.out.println("User count: " + userCount);
         System.out.println("Posts count: " + postCount);
         System.out.println("Comments count: " + commentsCount);
-        System.out.println("Average post count pre user: " + avgPostCountPreUser);
+        System.out.println("Average post count per user: " + avgPostCountPreUser);
         System.out.println("Average comments count per user: " + avgCommentsCountPreUser);
         System.out.println("Average comments count per post: " + avgCommentsCountPrePost);
     }
