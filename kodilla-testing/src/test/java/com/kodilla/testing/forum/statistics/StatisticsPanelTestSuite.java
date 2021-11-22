@@ -162,14 +162,14 @@ public class StatisticsPanelTestSuite {
     @Test
     public void testCalculateAdvStatisticsWith100Users() {
         //Given
-        String[] users = {"User1", "User2", "User3"};
-        List<String> usersNames = Arrays.asList(users);
+//        String[] users = {"User1", "User2", "User3"};
+//        List<String> usersNames = Arrays.asList(users);
         int resultPostCount = 200;
         int resultCommentsCount = 100;
         StatisticsPanel statisticsPanel = new StatisticsPanel(statisticsMock);
         when(statisticsMock.postsCount()).thenReturn(resultPostCount);
         when(statisticsMock.commentsCount()).thenReturn(resultCommentsCount);
-        when(statisticsMock.userNames()).thenReturn(usersNames);
+//        when(statisticsMock.userNames()).thenReturn(usersNames);
 
         //When
         statisticsPanel.calculateAdvStatistics(statisticsMock);
