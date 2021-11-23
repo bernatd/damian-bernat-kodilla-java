@@ -82,12 +82,9 @@ public class StatisticsPanelTestSuite {
 
         //Then
         assertEquals(1000, statisticsPanel.postCount());
-        assertEquals((double) resultPostCount/usersNames.size(),
-                statisticsPanel.getAvgPostCountPerUser());
-        assertEquals((double) resultCommentsCount/usersNames.size(),
-                statisticsPanel.getAvgCommentsCountPerUser());
-        assertEquals((double) resultCommentsCount/statisticsPanel.postCount(),
-                statisticsPanel.getAvgCommentsCountPerPost());
+        assertEquals(333.3333333333333, statisticsPanel.getAvgPostCountPerUser());
+        assertEquals(33.333333333333333, statisticsPanel.getAvgCommentsCountPerUser());
+        assertEquals(0.1, statisticsPanel.getAvgCommentsCountPerPost());
     }
 
     @Test
@@ -108,12 +105,9 @@ public class StatisticsPanelTestSuite {
 
         //Then
         assertEquals(0, statisticsPanel.commentsCount());
-        assertEquals((double) resultPostCount/usersNames.size(),
-                statisticsPanel.getAvgPostCountPerUser());
-        assertEquals((double) resultCommentsCount/usersNames.size(),
-                statisticsPanel.getAvgCommentsCountPerUser());
-        assertEquals((double) resultCommentsCount/statisticsPanel.postCount(),
-                statisticsPanel.getAvgCommentsCountPerPost());
+        assertEquals(50.0, statisticsPanel.getAvgPostCountPerUser());
+        assertEquals(0.0, statisticsPanel.getAvgCommentsCountPerUser());
+        assertEquals(0.0, statisticsPanel.getAvgCommentsCountPerPost());
     }
 
     @Test
@@ -134,12 +128,9 @@ public class StatisticsPanelTestSuite {
 
         //Then
         assertTrue(statisticsPanel.postCount() > statisticsPanel.commentsCount());
-        assertEquals((double) resultPostCount/usersNames.size(),
-                statisticsPanel.getAvgPostCountPerUser());
-        assertEquals((double) resultCommentsCount/usersNames.size(),
-                statisticsPanel.getAvgCommentsCountPerUser());
-        assertEquals((double) resultCommentsCount/statisticsPanel.postCount(),
-                statisticsPanel.getAvgCommentsCountPerPost());
+        assertEquals(66.66666666666667, statisticsPanel.getAvgPostCountPerUser());
+        assertEquals(33.333333333333336, statisticsPanel.getAvgCommentsCountPerUser());
+        assertEquals(0.5, statisticsPanel.getAvgCommentsCountPerPost());
     }
 
     @Test
@@ -161,12 +152,9 @@ public class StatisticsPanelTestSuite {
         //Then
 //        assertEquals(0, statisticsPanel.commentsCount());
         assertTrue(statisticsPanel.commentsCount() > statisticsPanel.postCount());
-        assertEquals((double) resultPostCount/usersNames.size(),
-                statisticsPanel.getAvgPostCountPerUser());
-        assertEquals((double) resultCommentsCount/usersNames.size(),
-                statisticsPanel.getAvgCommentsCountPerUser());
-        assertEquals((double) resultCommentsCount/statisticsPanel.postCount(),
-                statisticsPanel.getAvgCommentsCountPerPost());
+        assertEquals(66.66666666666667, statisticsPanel.getAvgPostCountPerUser());
+        assertEquals(333.3333333333333, statisticsPanel.getAvgCommentsCountPerUser());
+        assertEquals(5.0, statisticsPanel.getAvgCommentsCountPerPost());
     }
 
     @Test
@@ -187,12 +175,9 @@ public class StatisticsPanelTestSuite {
 
         //Then
         assertEquals(0, statisticsPanel.userNames().size());
-        assertEquals(0,
-                statisticsPanel.getAvgPostCountPerUser());
-        assertEquals(0,
-                statisticsPanel.getAvgCommentsCountPerUser());
-        assertEquals(0,
-                statisticsPanel.getAvgCommentsCountPerPost());
+        assertEquals(0, statisticsPanel.getAvgPostCountPerUser());
+        assertEquals(0, statisticsPanel.getAvgCommentsCountPerUser());
+        assertEquals(0, statisticsPanel.getAvgCommentsCountPerPost());
     }
 
     @Test
@@ -216,11 +201,8 @@ public class StatisticsPanelTestSuite {
 
         //Then
         assertEquals(1000, statisticsPanel.userNames().size());
-        assertEquals((double) resultPostCount/usersNames.size(),
-                statisticsPanel.getAvgPostCountPerUser());
-        assertEquals((double) resultCommentsCount/usersNames.size(),
-                statisticsPanel.getAvgCommentsCountPerUser());
-        assertEquals((double) resultCommentsCount/statisticsPanel.postCount(),
-                statisticsPanel.getAvgCommentsCountPerPost());
+        assertEquals(20.0, statisticsPanel.getAvgPostCountPerUser());
+        assertEquals(150.0, statisticsPanel.getAvgCommentsCountPerUser());
+        assertEquals(7.5, statisticsPanel.getAvgCommentsCountPerPost());
     }
 }
