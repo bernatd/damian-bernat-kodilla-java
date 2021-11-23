@@ -8,9 +8,9 @@ public class StatisticsPanel {
     private int userCount;
     private int postCount;
     private int commentsCount;
-    private int avgPostCountPreUser;
-    private int avgCommentsCountPreUser;
-    private int avgCommentsCountPrePost;
+    private double avgPostCountPerUser;
+    private double avgCommentsCountPerUser;
+    private double avgCommentsCountPerPost;
     private Statistics statistics;
 
     public StatisticsPanel(Statistics statistics) {
@@ -31,31 +31,39 @@ public class StatisticsPanel {
         return statistics.commentsCount();
     }
 
+    public double getAvgPostCountPerUser() {
+        return avgPostCountPerUser;
+    }
+
+    public double getAvgCommentsCountPerUser() {
+        return avgCommentsCountPerUser;
+    }
+
+    public double getAvgCommentsCountPerPost() {
+        return avgCommentsCountPerPost;
+    }
+
     public void calculateAdvStatistics(Statistics statistics) {
         userCount = statistics.userNames().size();
         postCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
-        if (userCount == 0) {
-            avgPostCountPreUser = 0;
-            avgCommentsCountPreUser = 0;
+        if (userCount == 0 || postCount == 0) {
+            avgPostCountPerUser = 0;
+            avgCommentsCountPerUser = 0;
+            avgCommentsCountPerPost = 0;
         } else {
-            avgPostCountPreUser = postCount / userCount;
-            avgCommentsCountPreUser = commentsCount / userCount;
+            avgPostCountPerUser = (double)postCount / userCount;
+            avgCommentsCountPerUser = (double)commentsCount / userCount;
+            avgCommentsCountPerPost = (double) commentsCount / postCount;
         }
-        if (postCount == 0) {
-            avgCommentsCountPrePost = 0;
-        } else {
-            avgCommentsCountPrePost = commentsCount / postCount;
-        }
-
     }
 
     public void showStatistics() {
         System.out.println("User count: " + userCount);
         System.out.println("Posts count: " + postCount);
         System.out.println("Comments count: " + commentsCount);
-        System.out.println("Average post count per user: " + avgPostCountPreUser);
-        System.out.println("Average comments count per user: " + avgCommentsCountPreUser);
-        System.out.println("Average comments count per post: " + avgCommentsCountPrePost);
+        System.out.println("Average post count per user: " + avgPostCountPerUser);
+        System.out.println("Average comments count per user: " + avgCommentsCountPerUser);
+        System.out.println("Average comments count per post: " + avgCommentsCountPerPost);
     }
 }
