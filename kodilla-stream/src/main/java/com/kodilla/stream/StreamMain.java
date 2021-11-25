@@ -1,33 +1,27 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.reference.FunctionalCalculator;
+
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        Forum theForum = new Forum();
+        Map<Integer, ForumUser> theResultOfForumUsers = theForum.getUserList().stream()
+                .filter(forumUser -> forumUser.getSex() == 'M')
+                .filter(forumUser -> Period.between(forumUser.getDateOfBirth(), LocalDate.now()).getYears() >= 20)
+                .filter(forumUser -> forumUser.getNoOfPublishedPosts() > 0)
+                .collect(Collectors.toMap(ForumUser::getUserId, forumUser -> forumUser));
 
-        poemBeautifier.beautify("Ala ma kota", (text) -> "ABC " + text + " ABC" );
-        poemBeautifier.beautify("Lambda expressions", (text) -> text.toUpperCase());
-        poemBeautifier.beautify("Kodilla Module 7", (text) -> "<-- " + text + " -->" );
-        poemBeautifier.beautify("This is an example text", (text) -> "\033[3m" + text + "\033[0m" );
-
-        System.out.println("\nCalculating expressions with lambdas");
-        expressionExecutor.executeExpression(10,5, (a,b) -> a+b);
-        expressionExecutor.executeExpression(10,5, (a,b) -> a-b);
-        expressionExecutor.executeExpression(10,5, (a,b) -> a*b);
-        expressionExecutor.executeExpression(10,5, (a,b) -> a/b);
-
-        System.out.println("\nCalculating expressions with method reference");
-        expressionExecutor.executeExpression(3,4, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(3,4, FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(3,4, FunctionalCalculator::subBFromA);
-        expressionExecutor.executeExpression(3,4, FunctionalCalculator::divideAByB);
-
-        System.out.println("Using stream to generate even numbers form 1 to 20");
-        NumbersGenerator.generateEven(20);
+        theResultOfForumUsers.entrySet().stream()
+                .map(entry -> entry.getKey() + " -> " + entry.getValue())
+                .forEach(System.out::println);
     }
 }
