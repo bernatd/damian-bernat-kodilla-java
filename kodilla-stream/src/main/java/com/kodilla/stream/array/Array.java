@@ -10,6 +10,7 @@ public final class Array implements ArrayOperations {
                 .mapToObj(Integer::toString)
                 .map(n -> n + ", ")
                 .forEach(System.out::print);
+        System.out.println();
 
         double avg = IntStream.range(0, numbers.length)
                 .map(n -> numbers[n])

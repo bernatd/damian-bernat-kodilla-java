@@ -17,18 +17,6 @@ public class ArrayOperationsTestSuite {
         double result = array.getAverage(numbers);
 
         //Then
-        System.out.println();
-        for (int number : numbers) {
-            System.out.print(number + ", ");
-        }
-        System.out.println();
-
-        double s = 0.0;
-        for (int i = 0; i < numbers.length; i++) {
-            s += numbers[i];
-        }
-        double avg = s / numbers.length;
-
-        assertEquals(avg, result);
+        assertEquals(214.1, result);
     }
 }
