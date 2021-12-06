@@ -3,9 +3,9 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class Player {
-    private final  String name;
-    private int noOfWonRounds = 0;
+    private final String name;
     private final Scanner scanner;
+    private int noOfWonRounds = 0;
 
     public Player(String name) {
         this.name = name;
@@ -29,7 +29,7 @@ public class Player {
     }
 
     public String move() {
-        System.out.println("\nWhat is your move?");
+        System.out.print("\nWhat is your move?  ");
         return scanner.nextLine();
     }
 }
