@@ -8,7 +8,7 @@ public class MovieStoreMain {
         MovieStore store = new MovieStore();
 
         List<String> theResultOfMovieStore = store.getMovies().entrySet().stream()
-                .flatMap(book -> book.getValue().stream())
+                .flatMap(movie -> movie.getValue().stream())
                 .collect(Collectors.toList());
 
         theResultOfMovieStore.stream()
