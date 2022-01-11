@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.ProductOrderService;
 
 public class OrderProcessor {
     private InformationService informationService;
@@ -13,13 +13,12 @@ public class OrderProcessor {
         this.orderRepository = orderRepository;
     }
 
-    public OrderDto process(final OrderRequest OrderRequest) {
-        boolean isOrdered = orderService.order(orderRequest.getUser(), orderRequest.getFrom(),
-                orderRequest.getTo());
+    public OrderDto process(final OrderRequest orderRequest) {
+        boolean isOrdered = orderService.order(orderRequest.getUser(), orderRequest.getProduct());
 
         if (isOrdered) {
             informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getFrom(), orderRequest.getTo());
+            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getProduct());
             return new OrderDto(orderRequest.getUser(), true);
         } else {
             return new OrderDto(orderRequest.getUser(), false);
