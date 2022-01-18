@@ -1,18 +1,24 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
-import java.util.Random;
-
-public class ExtraFoodShop implements Manufacturer {
+public class ExtraFoodShop implements Manufacturer, OrderService {
     @Override
-    public void process(final OrderRequest orderRequest) {
-        if (orderRequest.getSupplier() != null && orderRequest.getProduct() != null
-                && orderRequest.getNoOfItems() != 0) {
-            System.out.println("ExtraFoodShop: order created");
-            Random rand = new Random();
-            int orderConfirmationNumber = rand.nextInt(1000) + 2;
-            System.out.println("Order confirmation number is: " + orderConfirmationNumber);
+    public OrderDto process(final OrderRequest orderRequest) {
+        boolean isOrdered = order(orderRequest.getSupplier(), orderRequest.getProduct());
+
+        if (isOrdered) {
+            return new OrderDto(orderRequest.getSupplier(),true);
         } else {
-            System.out.println("ExtraFoodShop: order rejected.");
+            return new OrderDto(orderRequest.getSupplier(),false);
         }
+    }
+
+    @Override
+    public boolean order(Supplier supplier, Product product) {
+        System.out.println("New order has been created.");
+        System.out.println("Order details:");
+        System.out.println("\tProduct: " + product.getProdName());
+        System.out.println("\tBuyer: " + supplier.getName());
+        System.out.println();
+        return true;
     }
 }

@@ -8,8 +8,8 @@ public class Application {
         ExtraFoodShop efs = new ExtraFoodShop();
         HealthyShop hs = new HealthyShop();
 
-        gfs.process(orderRequest);
-        efs.process(orderRequest);
-        hs.process(orderRequest);
+        OrderProcessor orderProcessor = new OrderProcessor(hs);
+        orderProcessor.process(orderRequest);
+
     }
 }
