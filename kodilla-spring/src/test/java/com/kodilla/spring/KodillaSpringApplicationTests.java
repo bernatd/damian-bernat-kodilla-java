@@ -16,8 +16,8 @@ class KodillaSpringApplicationTests {
 	@Test
 	void testCircleLoadedIntoContainer() {
 		//Given
-		ApplicationContext context =
-				new AnnotationConfigApplicationContext("com.kodilla.spring");
+			ApplicationContext context =
+					new AnnotationConfigApplicationContext("com.kodilla.spring");
 		Shape shape = context.getBean(Circle.class);
 
 		//When
