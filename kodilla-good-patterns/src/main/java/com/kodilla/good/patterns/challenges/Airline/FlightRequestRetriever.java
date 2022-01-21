@@ -3,14 +3,14 @@ package com.kodilla.good.patterns.challenges.Airline;
 import java.util.HashSet;
 
 public class FlightRequestRetriever {
-//    public FlightRequest retrieve() {
-//        return new FlightRequest(new Connection("Warszawa", "Wrocław"));
-//    }
-/*    public FlightRequest retrieve() {
-        return new FlightRequest(new Connection("Warszawa", ""));
-    }*/
-    public FlightRequest retrieve() {
-        return new FlightRequest(new Connection("Warszawa", "Kraków"));
+    public FlightRequest retrieveFlightsFrom(String city) {
+        return new FlightRequest(new Connection(city, ""));
+    }
+    public FlightRequest retrieveFlightsTo(String city) {
+        return new FlightRequest(new Connection("", city));
+    }
+    public FlightRequest retrieveConnection(String origin, String destination) {
+        return new FlightRequest(new Connection(origin, destination));
     }
     public HashSet<Connection> retrieveConn() {
         HashSet<Connection> conn = new HashSet<>();
