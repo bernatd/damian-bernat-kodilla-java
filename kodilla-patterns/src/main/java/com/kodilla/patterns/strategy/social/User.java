@@ -4,9 +4,8 @@ public class User {
     private String userName;
     protected SocialPublisher socialPublisher;
 
-    public User(String userName, SocialPublisher socialPublisher) {
+    public User(String userName) {
         this.userName = userName;
-        this.socialPublisher = socialPublisher;
     }
 
     public SocialPublisher sharePost() {

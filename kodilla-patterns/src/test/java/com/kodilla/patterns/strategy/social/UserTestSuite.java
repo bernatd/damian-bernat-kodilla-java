@@ -9,14 +9,14 @@ public class UserTestSuite {
     @Test
     void testDefaultSharingStrategies() {
         //Given
-        User user1 = new User("Michal", new FacebookPublisher());
-        User user2 = new User("Agata", new SnapchatPublisher());
-        User user3 = new User("Stefan", new TwitterPublisher());
+        User user1 = new Millenials("Michal"); //Facebook
+        User user2 = new ZGeneration("Agata"); //Snapchat
+        User user3 = new YGeneration("Stefan"); //Twitter
 
         //When
-        String facebook = user1.socialPublisher.share();
-        String snapchat = user2.socialPublisher.share();
-        String twitter = user3.socialPublisher.share();
+        String facebook = user1.sharePost().share();
+        String snapchat = user2.sharePost().share();
+        String twitter = user3.sharePost().share();
 
         //Then
         assertEquals("Facebook", facebook);
@@ -27,13 +27,13 @@ public class UserTestSuite {
     @Test
     void testIndividualSharingStrategies() {
         //Given
-        User user4 = new User("Zdzicho", new TwitterPublisher());
+        User user4 = new YGeneration("Zdzicho");
 
         //When
-        String social = user4.socialPublisher.share();
+        String social = user4.sharePost().share();
         System.out.println("Social publisher: " + social);
         user4.setSocialPublisher(new FacebookPublisher());
-        social = user4.socialPublisher.share();
+        social = user4.sharePost().share();
         System.out.println("Social publisher: " + social);
 
         //Then
