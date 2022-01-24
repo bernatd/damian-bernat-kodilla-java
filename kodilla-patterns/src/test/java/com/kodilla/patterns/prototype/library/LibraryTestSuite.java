@@ -40,7 +40,7 @@ public class LibraryTestSuite {
         }
 
         //Then
-        library.books.remove(book1);
+        library.getBooks().remove(book1);
 
         //When
         System.out.println(library.getBooks());
