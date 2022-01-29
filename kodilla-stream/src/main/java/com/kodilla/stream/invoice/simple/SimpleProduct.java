@@ -1,7 +1,5 @@
 package com.kodilla.stream.invoice.simple;
 
-import java.util.Objects;
-
 public final class SimpleProduct {
     private final String productName;
     private final double productPrice;
