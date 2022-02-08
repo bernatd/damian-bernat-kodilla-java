@@ -16,8 +16,6 @@ public class InvoiceDaoTestSuite {
 
     @Autowired
     private InvoiceDao invoiceDao;
-    private ItemDao itemDao;
-    private ProductDao productDao;
 
     @Test
     void testInvoiceDaoSave() {
