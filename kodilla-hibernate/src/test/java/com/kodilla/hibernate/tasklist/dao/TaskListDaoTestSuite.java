@@ -19,6 +19,7 @@ public class TaskListDaoTestSuite {
 
     @Autowired
     private TaskListDao taskListDao;
+
     private static final String LISTNAME = "TODO";
     private static final String DESCRIPTION = "Test: TaskList DAO";
 
