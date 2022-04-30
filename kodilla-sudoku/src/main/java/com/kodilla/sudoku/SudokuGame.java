@@ -6,10 +6,12 @@ public class SudokuGame {
     Scanner sc;
     SudokuBoard sb;
     String answer = "";
+    SudokuSolver solver;
 
     public SudokuGame() {
         sc = new Scanner(System.in);
-        sb = new SudokuBoard();
+        sb = new SudokuBoard("Board");
+        solver = new SudokuSolver();
     }
 
     boolean resolveSudoku() {
@@ -35,7 +37,9 @@ public class SudokuGame {
         }
 
         //solve sudoku
+        solver.solve(sb);
         System.out.println("Sudoku solved.");
+        sb.printBoard();
 
 
         System.out.println("Would you like to resolve another sudoku game? [y/n]");
