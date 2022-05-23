@@ -35,10 +35,5 @@ public class FacebookTestingApp {
         WebElement selectYearEl = driver.findElement(By.xpath(XPATH_SELECT_YEAR));
         Select selectYear = new Select(selectYearEl);
         selectYear.selectByIndex(40);
-
-
-
-
-
     }
 }
